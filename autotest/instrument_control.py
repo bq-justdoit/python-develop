@@ -11,7 +11,7 @@ import pyvisa
 
 
 class InstrumentControl():
-    def __init__(self, ip="192.168.9.23"):
+    def __init__(self, ip="192.168.3.244"):
         self.ip = ip
         self.rm = pyvisa.ResourceManager()
 
@@ -22,20 +22,26 @@ class InstrumentControl():
         self.instrument = self.rm.open_resource(self.resource_name)
 
     def write(self, command):
-        self.instrument.write(command)
+        ret = self.instrument.write(command)
+        print("command: ",command)
+        print("ret: ",ret)
 
     def read(self):
         return self.instrument.read()
 
     def query(self, command):
         self.write(command)
-        return self.read()
+        ret = self.read()
+        print("ret: ",ret)
+        return ret
 
     def send(self, command):
         if "?" in command:
             return self.query(command)
         else:
             self.write(command)
+
+
 
 
 
