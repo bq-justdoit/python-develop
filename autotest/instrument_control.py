@@ -37,11 +37,11 @@ class InstrumentControl():
 
     def send(self, command):
         if "?" in command:
-            return self.query(command)
+            ret = self.query(command)
         else:
-            self.write(command)
+            ret =self.write(command)
             
-        return 0
+        return ret
 
 
 
