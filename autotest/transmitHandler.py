@@ -21,6 +21,7 @@ class TransmitHandler():
         self.InstrumentControl.connect()
 
         # 设置端口
+        # 设置端口
         self.InstrumentControl.write("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
         self.InstrumentControl.write("CONFigure:SOURce:ROUTe:USAGe:ALL RF18,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF")
         self.InstrumentControl.write(f"CONFigure:SOURce:ROUTe:USAGe {self.RF},ON")
