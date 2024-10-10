@@ -40,6 +40,8 @@ class InstrumentControl():
             return self.query(command)
         else:
             self.write(command)
+            
+        return 0
 
 
 
