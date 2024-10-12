@@ -43,7 +43,8 @@ class InstrumentControl():
             
         return ret
 
-
+    def close(self):
+        self.instrument.close()
 
 
 
