@@ -14,17 +14,17 @@ class TransmitHandler():
     def __init__(self):
         self.InstrumentControl = InstrumentControl()
 
-    def transmit_cw_signals(self, RF,frequency, power):
+    def transmit_cw_signals(self, rf_port,frequency, power):
         self.frequency = frequency
         self.power = power
-        self.RF=RF
+        self.rf_port=rf_port
         self.InstrumentControl.connect()
 
         # 设置端口
         # 设置端口
         self.InstrumentControl.write("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
         self.InstrumentControl.write("CONFigure:SOURce:ROUTe:USAGe:ALL RF18,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF")
-        self.InstrumentControl.write(f"CONFigure:SOURce:ROUTe:USAGe {self.RF},ON")
+        self.InstrumentControl.write(f"CONFigure:SOURce:ROUTe:USAGe {self.rf_port},ON")
 
 
         # 设置baseband mode 、list模式、external attenuation、dgai

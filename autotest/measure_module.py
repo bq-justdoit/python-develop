@@ -10,18 +10,18 @@
 import time
 
 from instrument_control import InstrumentControl
-from transmitHandler import TransmitHandler
+from transmit_handler import TransmitHandler
 
 
-class MeasureSignal():
+class ReceiveHandler():
     def __init__(self):
         self.InstrumentControl = InstrumentControl()
 
-    def measure_power(self, RF, frequency, reference_power, magin, ):
+    def measure_power(self, rf_port, frequency, reference_power, magin, ):
         self.InstrumentControl.connect()
 
         # 设置端口、list模式、external attenuation 、freq、reference power、 mixLevOffset、freqoffset
-        self.InstrumentControl.send(f"CONFigure:SENSe:POWer:ROUTe:GLOBal {RF}")
+        self.InstrumentControl.send(f"CONFigure:SENSe:POWer:ROUTe:GLOBal {rf_port}")
         self.InstrumentControl.send("CONFigure:SENSe:POWer:LIST OFF")
         self.InstrumentControl.send("CONFigure:SENSe:POWer:RFSettings:EATTenuation 0")
         self.InstrumentControl.send(f"CONFigure:SENSe:POWer:RFSettings:FREQuency {frequency}")
@@ -80,5 +80,5 @@ class MeasureSignal():
 if __name__ == '__main__':
     cw_signals = TransmitHandler()
     cw_signals.transmit_cw_signals("RF6", "1.2E+9", "-30")
-    measure_signal = MeasureSignal()
+    measure_signal = ReceiveHandler()
     measure_signal.measure_power("RF8", "1.2E+9", "-30", "5")
