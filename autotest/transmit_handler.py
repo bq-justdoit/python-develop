@@ -51,33 +51,42 @@ class TransmitHandler():
 
         # 设置端口
         self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
+        self.instrument_control.send("CONFigure:SOURce:ROUTe:USAGe:ALL RF18,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF")
+        self.instrument_control.send("ONFigure:SOURce:ROUTe:USAGe RF1,ON")
 
         # 设置baseband mode 、list模式、external attenuation、dgain
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
+        self.instrument_control.send("CONFigure:SOURce:BBMode ARB")
+        self.instrument_control.send("CONFigure:SOURce:LIST OFF")
+        self.instrument_control.send("CONFigure:SOURce:RFSettings:EATTenuation 0")
+        self.instrument_control.send("CONFigure:SOURce:RFSettings:DGAin 0")
 
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
+        # 设置frequency、level
+        self.instrument_control.send("CONFigure:SOURce:RFSettings:FREQuency 1.000000E+009")
+        self.instrument_control.send("CONFigure:SOURce:RFSettings:LEVel -70")
 
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
+        # Load ARB波形，设置repetition，查询波形属性
+        self.instrument_control.send("CONFigure:SOURce:ARB:FILE 'LTE_20MHz_64QAM_full_UL.wv'")
+        self.instrument_control.send("CONFigure:SOURce:ARB:FILE?")
+        self.instrument_control.send("CONFigure:SOURce:ARB:REPetition CONT")
+        self.instrument_control.send("CONFigure:SOURce:ARB:FILE:DATE?")
+        self.instrument_control.send("CONFigure:SOURce:ARB:FILE:VERSion?")
+        self.instrument_control.send("CONFigure:SOURce:ARB:FILE:OPTion?")
 
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
+        # 设置ARB波形autostart、trigger delay
+        self.instrument_control.send("CONFigure:SOURce:TRIGger:ARB:RETRigger ON")
+        self.instrument_control.send("CONFigure:SOURce:TRIG:ARB:AUTostart ON")
+        self.instrument_control.send("CONFigure:SOURce:TRIGger:ARB:DELay 0")
 
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
+        # 打开Generator并查询Generator当前状态
+        self.instrument_control.send("CONFigure:SOURce:STATe ON")
+        self.instrument_control.send("CONFigure:SOURce:STATe?")
 
-        self.instrument_control.send("CONFigure:SOURce:ROUTe:SCENario:SALone RF18")
+        # 查询可靠性
+        self.instrument_control.send("CONFigure:SOURce:RELiability:ALL?")
+
+        # 关闭Generator
+        self.instrument_control.send("CONFigure:SOURce:STATe OFF")
+
 
 
 
