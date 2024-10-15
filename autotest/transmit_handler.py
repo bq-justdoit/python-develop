@@ -8,6 +8,7 @@
     说明
 '''
 from instrument_control import InstrumentControl
+from instrument_operation_logger import InstrumentOperationLogger
 
 
 class TransmitHandler():
@@ -95,3 +96,5 @@ if __name__ == '__main__':
     arb_signals.instrument_control.send("CONFigure:SOURce:STATe?")
     arb_signals.instrument_control.send("SYSTem:ERRor:ALL?")
     arb_signals.instrument_control.close()
+    # transmit_module_logger=InstrumentOperationLogger("transmit_module")
+    # transmit_module_logger.log_time()
