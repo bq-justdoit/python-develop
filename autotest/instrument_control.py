@@ -17,7 +17,7 @@ class InstrumentControl():
     def __init__(self, ip="192.168.3.244"):
         self.ip = ip
         self.rm = pyvisa.ResourceManager()
-        self.command_logger = InstrumentOperationLogger("command")
+        self.command_logger = InstrumentOperationLogger('command')
 
     def connect(self):
         # self.resource_name = "TCPIP0::" + self.ip + "::inst0::INSTR"

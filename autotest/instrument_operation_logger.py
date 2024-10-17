@@ -50,3 +50,6 @@ class InstrumentOperationLogger():
 
     def log_error(self, message):
         self.logger.error(message)
+
+    def log_tips(self, message):
+        self.logger.info(message)
