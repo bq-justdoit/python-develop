@@ -95,7 +95,7 @@ class TransmitHandler():
         # 查询可靠性
         self.instrument_control.send("CONFigure:SOURce:RELiability:ALL?")
 
-        self.instrument_control.command_logger.log_tips(f"arb信号已发射：频率 = {self.frequency} Hz, 功率 = {self.power} dBm")
+        # self.instrument_control.command_logger.log_tips(f"arb信号已发射：频率 = {self.frequency} Hz, 功率 = {self.power} dBm")
 
 
 if __name__ == '__main__':
