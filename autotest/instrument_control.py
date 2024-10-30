@@ -10,15 +10,14 @@
 
 import pyvisa
 
-from instrument_operation_logger import InstrumentOperationLogger
+from instrument_operation_logger import  instrument_operation_logger
 
 
 class InstrumentControl():
     def __init__(self, ip="192.168.3.244"):
         self.ip = ip
         self.rm = pyvisa.ResourceManager()
-        self.command_logger = InstrumentOperationLogger('command')
-
+        self.command_logger = instrument_operation_logger
     def connect(self):
         # self.resource_name = "TCPIP0::" + self.ip + "::inst0::INSTR"
         self.resource_name = f"TCPIP0::{self.ip}::inst0::INSTR"
@@ -44,6 +43,7 @@ class InstrumentControl():
         self.command_logger.log_command(command)
         if "?" in command:
             ret = self.query(command)
+            self.command_logger.log_tips(ret)
         else:
             ret = self.write(command)
 

@@ -282,31 +282,33 @@ class ReceiveHandler():
 
 
 if __name__ == '__main__':
-    # cw_signals = TransmitHandler()
-    # cw_signals.transmit_cw_signals("RF6", "1.2E+9", "-30")
-    # measure_signal = ReceiveHandler()
-    # measure_signal.measure_power("RF8", "1.2E+9", "-30", "5")
-    # cw_signals.transmit_close()
-    # measure_signal.close_instrument()
+    cw_signals = TransmitHandler()
+    cw_signals.transmit_cw_signals("RF6", "1.2E+9", "-30")
+    measure_signal = ReceiveHandler()
+    measure_signal.measure_power("RF8", "1.2E+9", "-30", "5")
+    measure_signal = ReceiveHandler()
+    measure_signal.measure_power("RF8", "1.2E+9", "-30", "5")
+    cw_signals.transmit_close()
+    measure_signal.close_instrument()
 
-    lte_signals = TransmitHandler()
-    arb_file = "MTK_LTE_FDD_5M_OCNG.wv"
-    lte_signals.transmit_arb_signals("RF6", "1.2E+9", "-30", arb_file)
-    measure_lte_signal = ReceiveHandler()
-    dic_data = {
-        "rf_port": "RF8",
-        "frequency": "1.2E+9",
-        "signal_type": "UL",
-        "duplex_mode": "FDD",
-        "bandwidth": "B050",
-        "ULDL_configuration": "1",
-        "SpecialSubframe": "0",
-        "PhsLayerCellID": "1",
-        "DeltaSeqShift": "0",
-        "Repetition": "SING",
-        "ModScheme": "QPSK",
-        "trigger_source": "Free Run (Fast Sync)",
-        "TrigThreshold": "-30",
-    }
-    measure_lte_signal.measure_lte(dic_data)
+    # lte_signals = TransmitHandler()
+    # arb_file = "MTK_LTE_FDD_5M_OCNG.wv"
+    # lte_signals.transmit_arb_signals("RF6", "1.2E+9", "-30", arb_file)
+    # measure_lte_signal = ReceiveHandler()
+    # dic_data = {
+    #     "rf_port": "RF8",
+    #     "frequency": "1.2E+9",
+    #     "signal_type": "UL",
+    #     "duplex_mode": "FDD",
+    #     "bandwidth": "B050",
+    #     "ULDL_configuration": "1",
+    #     "SpecialSubframe": "0",
+    #     "PhsLayerCellID": "1",
+    #     "DeltaSeqShift": "0",
+    #     "Repetition": "SING",
+    #     "ModScheme": "QPSK",
+    #     "trigger_source": "Free Run (Fast Sync)",
+    #     "TrigThreshold": "-30",
+    # }
+    # measure_lte_signal.measure_lte(dic_data)
     # measure_lte_signal.close_instrument()

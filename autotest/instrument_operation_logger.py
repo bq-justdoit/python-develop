@@ -17,11 +17,11 @@ from logging import FileHandler
 
 
 class InstrumentOperationLogger():
-    def __init__(self, module_name_log):
+    def __init__(self):
         # 先初始化日志记录器
-        self.logger = logging.getLogger(f'{module_name_log}')
+        self.logger = logging.getLogger('operate_log')
         self.logger.setLevel(logging.INFO)
-        log_file = f'{module_name_log}.log'
+        log_file = 'operate_log.log'
 
         file_handler = FileHandler(log_file, mode='a', encoding=None, delay=False)
         file_handler.setLevel(logging.INFO)
@@ -34,7 +34,7 @@ class InstrumentOperationLogger():
         self.logger.addHandler(file_handler)
 
         # 添加处理器到记录器
-        self.logger.addHandler(file_handler)
+        # self.logger.addHandler(file_handler)
 
         self.log_time()
 
@@ -53,3 +53,10 @@ class InstrumentOperationLogger():
 
     def log_tips(self, message):
         self.logger.info(message)
+
+
+#初始化
+instrument_operation_logger=InstrumentOperationLogger()
+
+if __name__ == '__main__':
+    instrument_operation_logger=InstrumentOperationLogger()
